@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    font-synthesis: none;
+  }
+  body {
+    @apply bg-ivoire font-sans text-encre antialiased;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { @apply font-display font-normal; letter-spacing: 0.01em; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  img { @apply block max-w-full; }
+  button { @apply cursor-pointer; }
+  :focus-visible { outline: 2px solid #A8854A; outline-offset: 3px; }
+  ::selection { background: #A8854A; color: #fff; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-page px-5 md:px-8 xl:px-12; }
+  .btn {
+    @apply inline-flex min-h-[3.1rem] items-center justify-center gap-2.5 px-7 text-[0.95rem] font-medium transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply bg-noir text-ivoire hover:bg-encre; }
+  .btn-outline { @apply border border-encre text-encre hover:bg-encre hover:text-ivoire; }
+  .btn-light { @apply bg-ivoire text-noir hover:bg-lin; }
+  .btn-wa { @apply bg-wa text-white hover:brightness-95; }
+  .link-u { @apply underline decoration-sable decoration-1 underline-offset-[5px] transition-colors hover:decoration-encre; }
+  .field {
+    @apply w-full border border-sable bg-ivoire px-4 py-3.5 text-[1rem] text-encre placeholder:text-pierre/70 transition-colors focus:border-encre focus:outline-none;
+  }
+  .chip {
+    @apply inline-flex min-h-[2.5rem] items-center gap-2 border border-sable px-4 text-[0.9rem] transition-colors;
+  }
+  .chip[aria-pressed='true'], .chip[aria-checked='true'] { @apply border-encre bg-encre text-ivoire; }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+.safe-b { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
